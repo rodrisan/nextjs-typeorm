@@ -53,6 +53,6 @@ export class ProductsController {
 
   @Delete(':id')
   delete(@Param('id', ParseIntPipe) id: number) {
-    return { message: 'delete action', id };
+    return this._productService.remove(+id);
   }
 }
