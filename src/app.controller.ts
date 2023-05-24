@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -20,26 +20,47 @@ export class AppController {
     return 'The another method using slashes';
   }
 
-  @Get('products')
-  getProducts() {
-    return `All the Products`;
-  }
-
   // Working with params
+
+  // Working with multiple params
+  @Get('categories/:catId/products/:prodId')
+  getCategory(@Param('catId') catId: string, @Param('prodId') prodId: string) {
+    return `product: ${prodId}, cat: ${catId}`;
+  }
 
   // @Get('products/:id')
   // getProduct(@Param() params: any) {
   //   return `Product ${params.id}`;
   // }
 
+  // Routes colission.
+  // In order to avoid them, it is required to set the
+  // non-dynamic routes first.
+
+  @Get('products/filter')
+  getProductFilter() {
+    return `The filter`;
+  }
+
   @Get('products/:id')
   getProduct(@Param('id') id: string) {
     return `Product ${id}`;
   }
 
-  // Working with multiple params
-  @Get('categories/:catId/products/:prodId')
-  getCategory(@Param('catId') catId: string, @Param('prodId') prodId: string) {
-    return `product: ${prodId}, cat: ${catId}`;
+  // Query params
+
+  // @Get('products')
+  // getProducts(@Query() params: any) {
+  //   const { limit, offset } = params;
+  //   return `products: limit=> ${limit}, offset=>${offset}`;
+  // }
+
+  @Get('products')
+  getProducts(
+    @Query('limit') limit = 100,
+    @Query('offset') offset = 0,
+    @Query('brand') brand: string,
+  ) {
+    return `products: limit=>${limit}, offset=>${offset}, brand=>${brand}`;
   }
 }
