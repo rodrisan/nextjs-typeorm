@@ -11,9 +11,12 @@ import {
   HttpCode,
 } from '@nestjs/common';
 
-import { ProductService } from 'src/services/product.service';
+import { ProductService } from 'src/modules/products/services/product.service';
 import { ParseIntPipe } from 'src/common/parse-int.pipe';
-import { CreateProductDto, UpdateProductDto } from 'src/dtos/product.dto';
+import {
+  CreateProductDto,
+  UpdateProductDto,
+} from 'src/modules/products/dtos/product.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('products')
