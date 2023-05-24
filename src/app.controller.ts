@@ -23,10 +23,10 @@ export class AppController {
   // Working with params
 
   // Working with multiple params
-  @Get('categories/:catId/products/:prodId')
-  getCategory(@Param('catId') catId: string, @Param('prodId') prodId: string) {
-    return `product: ${prodId}, cat: ${catId}`;
-  }
+  // @Get('categories/:catId/products/:prodId')
+  // getCategory(@Param('catId') catId: string, @Param('prodId') prodId: string) {
+  //   return `product: ${prodId}, cat: ${catId}`;
+  // }
 
   // @Get('products/:id')
   // getProduct(@Param() params: any) {
@@ -37,15 +37,15 @@ export class AppController {
   // In order to avoid them, it is required to set the
   // non-dynamic routes first.
 
-  @Get('products/filter')
-  getProductFilter() {
-    return `The filter`;
-  }
+  // @Get('products/filter')
+  // getProductFilter() {
+  //   return `The filter`;
+  // }
 
-  @Get('products/:id')
-  getProduct(@Param('id') id: string) {
-    return `Product ${id}`;
-  }
+  // @Get('products/:id')
+  // getProduct(@Param('id') id: string) {
+  //   return `Product ${id}`;
+  // }
 
   // Query params
 
@@ -55,12 +55,12 @@ export class AppController {
   //   return `products: limit=> ${limit}, offset=>${offset}`;
   // }
 
-  @Get('products')
-  getProducts(
-    @Query('limit') limit = 100,
-    @Query('offset') offset = 0,
-    @Query('brand') brand: string,
-  ) {
-    return `products: limit=>${limit}, offset=>${offset}, brand=>${brand}`;
-  }
+  // @Get('products')
+  // getProducts(
+  //   @Query('limit') limit = 100,
+  //   @Query('offset') offset = 0,
+  //   @Query('brand') brand: string,
+  // ) {
+  //   return `products: limit=>${limit}, offset=>${offset}, brand=>${brand}`;
+  // }
 }
