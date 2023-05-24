@@ -9,4 +9,14 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
+
+  @Get('new-method')
+  newMethod(): string {
+    return 'The new method';
+  }
+
+  @Get('/another-method/')
+  anocherMethod(): string {
+    return 'The another method using slashes';
+  }
 }
