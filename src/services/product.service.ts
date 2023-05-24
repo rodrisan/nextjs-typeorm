@@ -35,18 +35,27 @@ export class ProductService {
   }
 
   update(id: number, payload: any) {
-    const productIndex = this.products.findIndex((item) => item.id === id);
+    // const productIndex = this.products.findIndex((item) => item.id === id);
+    // if (productIndex === -1) throw new Error('Not found');
+    // this.products[productIndex] = {
+    //   id: id,
+    //   ...payload,
+    // };
+    // return {
+    //   data: this.products[productIndex],
+    //   message: 'Product updated succesfully',
+    // };
 
-    if (productIndex === -1) throw new Error('Not found');
-
-    this.products[productIndex] = {
-      id: id,
-      ...payload,
-    };
-    return {
-      data: this.products[productIndex],
-      message: 'Product updated succesfully',
-    };
+    const product = this.findOne(id);
+    if (product) {
+      const index = this.products.findIndex((item) => item.id === id);
+      this.products[index] = {
+        ...product,
+        ...payload,
+      };
+      return this.products[index];
+    }
+    return null;
   }
 
   delete(id: number) {
