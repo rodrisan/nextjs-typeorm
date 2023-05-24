@@ -5,11 +5,12 @@ import {
   IsString,
   IsUrl,
 } from 'class-validator';
-import { PartialType } from '@nestjs/mapped-types';
+import { ApiProperty, PartialType } from '@nestjs/swagger';
 
 export class CreateProductDto {
   @IsNotEmpty()
   @IsString({ message: 'We need a valid name' })
+  @ApiProperty({ description: `Product's name` })
   readonly name: string;
 
   @IsNotEmpty()
