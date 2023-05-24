@@ -27,7 +27,7 @@ export class ProductsController {
 
   @Get(':id')
   @HttpCode(HttpStatus.ACCEPTED)
-  getOne(@Param('id') id: string) {
+  getOne(@Param('id', ParseIntPipe) id: number) {
     // response.status(200).send({ message: `Product ${id}` });
     return this._productService.findOne(+id);
   }
