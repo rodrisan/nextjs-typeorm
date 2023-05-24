@@ -1,14 +1,19 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 
 @Controller('orders')
 export class OrdersController {
   @Get()
   getAll() {
-    return 'Get all';
+    return { message: 'Get all' };
   }
 
   @Get()
   getOne(@Param('id') id: number) {
-    return `Get one ${id}`;
+    return { message: `Get one ${id}` };
+  }
+
+  @Post()
+  create(@Body() payload: any) {
+    return { message: 'creation action', payload };
   }
 }
