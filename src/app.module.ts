@@ -11,11 +11,13 @@ import { todosApi } from 'src/common/constants';
 import { lastValueFrom } from 'rxjs';
 import { DatabaseModule } from './modules/database/database.module';
 import { environments } from './common/environments';
+import config from './common/config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       envFilePath: [environments[process.env.NODE_ENV], '.env'],
+      load: [config],
       isGlobal: true,
     }),
     UsersModule,
