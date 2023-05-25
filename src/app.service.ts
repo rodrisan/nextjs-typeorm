@@ -14,9 +14,9 @@ export class AppService {
   getHello(): string {
     // const apiKey = this._configService.get<string>('API_KEY');
     // const dbName = this._configService.get<string>('DATABASE_NAME');
-    const apiKey = this._configService.apiKey;
-    const dbName = this._configService.database.name;
-    console.log(this.tasks);
-    return `Hello World! ${apiKey} ${dbName}`;
+    // const apiKey = this._configService.apiKey;
+    // const dbName = this._configService.database.name;
+    // console.log(this.tasks);
+    return `Hello World!`;
   }
 }

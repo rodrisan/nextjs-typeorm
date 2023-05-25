@@ -1,6 +1,6 @@
 export const environments = {
   dev: '.env.dev',
-  prod: '.env.prod',
+  production: '.env.production',
   stage: '.env.stage',
   local: '.env.local',
 };
