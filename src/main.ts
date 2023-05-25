@@ -16,7 +16,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('API')
-    .setDescription('Nest Platzi Store')
+    .setDescription('Nest Modular')
     .setVersion('1.0')
     .addTag('nest')
     .build();
