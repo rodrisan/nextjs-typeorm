@@ -8,6 +8,7 @@ export default registerAs('config', () => {
       port: process.env.DATABASE_PORT,
       user: process.env.DATABASE_USER,
     },
+    allowCors: process.env.ALLOW_CORS,
     apiKey: process.env.API_KEY,
   };
 });
