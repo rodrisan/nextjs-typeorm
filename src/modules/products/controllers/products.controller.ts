@@ -10,6 +10,7 @@ import {
   HttpStatus,
   HttpCode,
 } from '@nestjs/common';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
 import { ProductService } from 'src/modules/products/services/product.service';
 import { ParseIntPipe } from 'src/common/parse-int.pipe';
@@ -17,18 +18,19 @@ import {
   CreateProductDto,
   UpdateProductDto,
 } from 'src/modules/products/dtos/product.dto';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
-@ApiTags('products')
+@ApiTags('Products')
 @Controller('products')
 export class ProductsController {
   constructor(private _productService: ProductService) {}
 
+  @ApiOperation({ summary: 'Filter a Product' })
   @Get('filter')
   filter() {
     return { message: `The filter` };
   }
 
+  @ApiOperation({ summary: 'Get a Product' })
   @Get(':id')
   @HttpCode(HttpStatus.ACCEPTED)
   getOne(@Param('id', ParseIntPipe) id: number) {
@@ -36,8 +38,8 @@ export class ProductsController {
     return this._productService.findOne(+id);
   }
 
+  @ApiOperation({ summary: 'List of Products' })
   @Get()
-  @ApiOperation({ summary: 'List of products' })
   get(
     @Query('limit') limit = 100,
     @Query('offset') offset = 0,
@@ -46,11 +48,13 @@ export class ProductsController {
     return this._productService.findAll();
   }
 
+  @ApiOperation({ summary: 'Create a new Product' })
   @Post()
   create(@Body() payload: CreateProductDto) {
     return this._productService.create(payload);
   }
 
+  @ApiOperation({ summary: 'Delete an existing Product' })
   @Put(':id')
   update(
     @Param('id', ParseIntPipe) id: number,
@@ -59,6 +63,7 @@ export class ProductsController {
     return this._productService.update(id, payload);
   }
 
+  @ApiOperation({ summary: 'Delete an existing Product' })
   @Delete(':id')
   delete(@Param('id', ParseIntPipe) id: number) {
     return this._productService.remove(+id);
