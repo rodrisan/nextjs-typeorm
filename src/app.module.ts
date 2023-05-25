@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { HttpModule, HttpService } from '@nestjs/axios';
+import { ConfigModule } from '@nestjs/config';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -12,6 +13,10 @@ import { DatabaseModule } from './modules/database/database.module';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      envFilePath: [`.env.${process.env.NODE_ENV}`, '.env'],
+      isGlobal: true,
+    }),
     UsersModule,
     ProductsModule,
     OrdersModule,
