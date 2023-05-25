@@ -10,11 +10,12 @@ import { OrdersModule } from './modules/orders/orders.module';
 import { todosApi } from 'src/common/constants';
 import { lastValueFrom } from 'rxjs';
 import { DatabaseModule } from './modules/database/database.module';
+import { environments } from './common/environments';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: [`.env.${process.env.NODE_ENV}`, '.env'],
+      envFilePath: [environments[process.env.NODE_ENV], '.env'],
       isGlobal: true,
     }),
     UsersModule,
