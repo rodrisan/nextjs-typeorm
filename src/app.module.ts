@@ -3,12 +3,12 @@ import { HttpModule, HttpService } from '@nestjs/axios';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UsersModule } from '../users/users.module';
-import { ProductsModule } from '../products/products.module';
-import { OrdersModule } from '../orders/orders.module';
+import { UsersModule } from './modules/users/users.module';
+import { ProductsModule } from './modules/products/products.module';
+import { OrdersModule } from './modules/orders/orders.module';
 import { todosApi } from 'src/common/constants';
 import { lastValueFrom } from 'rxjs';
-import { DatabaseModule } from '../database/database.module';
+import { DatabaseModule } from './modules/database/database.module';
 
 @Module({
   imports: [
