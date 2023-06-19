@@ -27,7 +27,7 @@
     "typeorm:clear": "npm run typeorm cache:clear"
   },
   "dependencies": {
-    "@nestjs/axios": "^2.0.0",
+    "@nestjs/axios": "^3.0.0",
     "@nestjs/common": "^9.4.2",
     "@nestjs/config": "^2.3.2",
     "@nestjs/core": "^9.4.2",
